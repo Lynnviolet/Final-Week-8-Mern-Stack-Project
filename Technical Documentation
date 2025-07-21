@@ -1,0 +1,162 @@
+📊 Overview
+
+FitTrack is a fitness and health tracking MERN stack application designed to help users monitor workouts, nutrition, and progress over time. It features user authentication, activity logging, analytics, and a real-time dashboard.
+
+📒 Data Models Overview
+
+User
+
+_id
+
+name
+
+email
+
+password
+age
+height
+weight
+goals
+
+Workout
+
+_id
+
+userId
+
+date
+
+type (e.g., running, lifting)
+
+duration (in minutes)
+
+caloriesBurned
+
+notes
+
+Nutrition
+
+_id
+
+userId
+
+date
+
+mealType (e.g., breakfast, lunch)
+
+calories
+
+protein
+
+carbs
+
+fats
+
+notes
+
+Progress
+
+_id
+
+userId
+
+date
+
+weight
+
+bmi
+
+bodyFat
+
+Notification
+
+_id
+
+userId
+
+message
+
+read
+
+timestamp
+
+📅 Planned API Endpoints
+
+Auth
+
+POST /api/auth/register — Create new user
+
+POST /api/auth/login — Authenticate user and return token
+
+GET /api/auth/me — Get logged-in user's data
+
+User
+
+GET /api/users/:id — Get user profile by ID
+
+PUT /api/users/:id — Update user profile
+
+Workout
+
+GET /api/workouts — Get all workouts for logged-in user
+
+POST /api/workouts — Add new workout
+
+GET /api/workouts/:id — Get workout by ID
+
+PUT /api/workouts/:id — Update workout
+
+DELETE /api/workouts/:id — Delete workout
+
+Nutrition
+
+GET /api/nutrition — Get all meals for user
+
+POST /api/nutrition — Log a new meal
+
+GET /api/nutrition/:id — Get meal by ID
+
+PUT /api/nutrition/:id — Update meal
+
+DELETE /api/nutrition/:id — Delete meal
+
+Progress
+
+GET /api/progress — Get user's progress logs
+
+POST /api/progress — Add new progress entry
+
+GET /api/progress/:id — Get progress by ID
+
+PUT /api/progress/:id — Update progress
+
+DELETE /api/progress/:id — Delete progress
+
+Notifications
+
+GET /api/notifications — Get user notifications
+
+POST /api/notifications — Create notification
+
+PUT /api/notifications/:id/read — Mark as read
+
+🤝 Data Flow Summary
+
+User registers/logs in to get access token.
+
+Authenticated requests use token in headers.
+
+User interacts with the frontend UI to:
+
+Log new workouts, meals, or progress.
+
+View analytics and dashboard.
+
+Receive and read notifications.
+
+Backend handles requests via RESTful API, performs DB operations.
+
+MongoDB stores all data securely.
+
+Socket.io (optional) handles real-time features like live stats/notifications.
+
