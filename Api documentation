@@ -1,0 +1,127 @@
+# 📡 FitTrack API Documentation
+
+**Base URL**: `https://fittrack-api.onrender.com/api`
+
+This RESTful API supports the core backend of the FitTrack application, allowing users to manage workouts, meals, user authentication, and progress tracking.
+
+---
+
+## 🔐 Auth Routes
+
+### POST `/auth/register`
+- Registers a new user.
+- **Request Body:**
+  ```json
+  {
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "password": "securepassword"
+  }
+Response:
+
+json
+Copy
+Edit
+{
+  "message": "User created successfully",
+  "token": "<JWT_TOKEN>"
+}
+POST /auth/login
+Authenticates user credentials and returns a token.
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "email": "jane@example.com",
+  "password": "securepassword"
+}
+Response:
+
+json
+Copy
+Edit
+{
+  "token": "<JWT_TOKEN>"
+}
+🧑‍💪 Workouts
+GET /workouts
+Retrieves all workouts for the logged-in user.
+
+Headers: Authorization: Bearer <JWT_TOKEN>
+
+POST /workouts
+Logs a new workout.
+
+Headers: Authorization: Bearer <JWT_TOKEN>
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "type": "Running",
+  "duration": 30,
+  "caloriesBurned": 250,
+  "date": "2025-07-15"
+}
+🍽️ Meals
+GET /meals
+Returns all meals logged by the user.
+
+Headers: Authorization: Bearer <JWT_TOKEN>
+
+POST /meals
+Adds a new meal entry.
+
+Headers: Authorization: Bearer <JWT_TOKEN>
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "name": "Lunch",
+  "calories": 600,
+  "protein": 30,
+  "date": "2025-07-15"
+}
+📈 Progress
+GET /progress
+Returns overall progress statistics.
+
+Headers: Authorization: Bearer <JWT_TOKEN>
+
+Response:
+
+json
+Copy
+Edit
+{
+  "totalWorkouts": 42,
+  "totalCaloriesBurned": 8500,
+  "weeklySummary": [
+    {
+      "week": "2025-Week-28",
+      "workouts": 4,
+      "meals": 21,
+      "caloriesIntake": 12500,
+      "caloriesBurned": 1500
+    }
+  ]
+}
+⚙️ Categories (Optional)
+GET /categories
+Returns workout and meal categories.
+
+🛑 Error Responses
+401 Unauthorized – Invalid or missing JWT token
+
+400 Bad Request – Invalid input data
+
+500 Internal Server Error – Server failure
+
