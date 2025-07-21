@@ -1,0 +1,100 @@
+ FitTrack App Presentation
+Title: FitTrack — Your Health & Fitness Companion
+
+Slide 1: Welcome & Introduction
+Title: FitTrack – Health & Fitness Made Simple
+
+Subtitle: A Full-Stack MERN Application
+
+Your Name: Lynn Violet Wanjiru Kimotho
+
+Date: July 2025
+
+Slide 2: Problem Statement
+Many people struggle to track workouts, meals, and fitness progress consistently.
+
+Existing apps are either too complex or lack personalization.
+
+Need for a simple, real-time, all-in-one platform.
+
+Slide 3: Solution: FitTrack
+Track your workouts and meals
+
+Visualize your fitness progress
+
+Stay accountable with real-time updates and notifications
+
+Simple interface and easy to use
+
+Slide 4: Core Features
+🧑‍💪 Workout & Meal Logging
+
+📈 Progress Dashboard
+
+🧾 Real-Time Stats
+
+🔔 Notifications & Reminders
+
+🔐 Secure Authentication
+
+Slide 5: Tech Stack
+Frontend: React.js + Tailwind CSS
+
+Backend: Node.js + Express.js
+
+Database: MongoDB with Mongoose
+
+Real-Time: Socket.io
+
+Deployment: Vercel (frontend), Render (backend)
+
+CI/CD & Monitoring: GitHub Actions + Vercel Analytics
+
+Slide 6: Architecture Overview
+Frontend: React components, Axios for API calls, Protected routes using JWT
+Backend: RESTful API, JWT auth middleware, Mongoose models
+Database: MongoDB collections for users, workouts, meals, progress
+Real-time Layer: Socket.io server for live notifications
+
+
+Slide 7: Demo (Screenshots or Live)
+Homepage UI
+
+Login & Register
+
+Dashboard with progress
+
+Add Workout / Add Meal forms
+
+Real-time stats or toast notifications
+
+Slide 8: Testing & DevOps
+Testing Tools: Jest, Supertest, React Testing Library
+
+CI/CD: GitHub Actions for backend/frontend test & deploy
+
+Monitoring: Console logging, error boundary components, Vercel Analytics
+
+Slide 9: Challenges & Learnings
+Integrating real-time features with Socket.io
+
+Ensuring secure authentication and route protection
+
+CI/CD automation with GitHub Actions
+
+Handling async data fetching in React
+
+Slide 10: Future Enhancements
+Social feed with friend activity
+
+Push notifications
+
+Admin dashboard for managing users
+
+AI-based suggestions for workouts/meals
+
+Slide 11: Q&A / Thank You
+Contact Info:
+📧 lynn@example.com
+💼 LinkedIn: linkedin.com/in/lynnkimotho
+🧑‍💻 GitHub: github.com/lynnviolet
