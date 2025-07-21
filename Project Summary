@@ -1,0 +1,14 @@
+Project Name: FitTrack
+Goal: Help users track workouts, meals, and fitness progress over time with real-time updates and reminders.
+A health and fitness tracking app that helps users log workouts, track their nutrition, monitor progress through dashboards, and optionally interact in a social feed.
+The app promotes consistency and motivation by providing reminders and real-time feedback.
+
+Core Features:
+User Authentication
+Workout Logging
+Nutrition Tracking
+Progress Dashboard
+Real-time Notifications
+
+Problem Solved: Many people struggle with maintaining healthy routines due to lack of structure and tracking. 
+FitTrack gives users visibility into their progress and motivation to keep going.
