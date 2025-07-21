@@ -1,0 +1,10 @@
+{
+  _id,
+  userId,
+  mealType, // breakfast, lunch, dinner, snack
+  foodItems: [
+    { name, calories, protein, carbs, fat }
+  ],
+  totalCalories,
+  date
+}
