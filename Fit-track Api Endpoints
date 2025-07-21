@@ -1,0 +1,106 @@
+# 📌 Planned API Endpoints and Data Flow for FitTrack (Task/Project Manager)
+
+---
+
+## 🔐 Auth Routes (User Registration & Login)
+
+### POST `/api/auth/register`
+- Register a new user (username, email, password)
+
+### POST `/api/auth/login`
+- Log in and return JWT token
+
+### GET `/api/auth/me`
+- Get current logged-in user info (based on token)
+
+---
+
+## 👤 User Routes
+
+### GET `/api/users/`
+- Get all users (admin only)
+
+### GET `/api/users/:id`
+- Get user by ID
+
+### PUT `/api/users/:id`
+- Update user profile (name, email, etc.)
+
+### DELETE `/api/users/:id`
+- Delete a user (admin only)
+
+---
+
+## 📁 Project Routes
+
+### GET `/api/projects/`
+- Get all projects for logged-in user
+
+### POST `/api/projects/`
+- Create new project
+
+### GET `/api/projects/:id`
+- Get specific project
+
+### PUT `/api/projects/:id`
+- Update project name, description, deadline
+
+### DELETE `/api/projects/:id`
+- Delete project and related tasks
+
+---
+
+## ✅ Task Routes
+
+### GET `/api/tasks/`
+- Get all tasks for user (optional filter: project, status, priority)
+
+### POST `/api/tasks/`
+- Create new task (title, description, deadline, projectId)
+
+### GET `/api/tasks/:id`
+- Get a single task
+
+### PUT `/api/tasks/:id`
+- Update task details (title, description, status)
+
+### PATCH `/api/tasks/:id/complete`
+- Mark task as complete/incomplete
+
+### DELETE `/api/tasks/:id`
+- Delete a task
+
+---
+
+## 💬 Comment Routes (Optional)
+
+### POST `/api/tasks/:taskId/comments`
+- Add a comment to a task
+
+### GET `/api/tasks/:taskId/comments`
+- Get all comments for a task
+
+---
+
+## 📡 Real-Time Events via Socket.io (Optional)
+- `task_created` → Notify user when a task is added
+- `task_updated` → When task is modified
+- `task_completed` → When status is changed
+- `new_comment` → New comment added on task
+
+---
+
+## 🔁 Sample Data Flow
+
+### Creating a Task
+1. User fills task form in React and submits
+2. React sends `POST /api/tasks` with task data
+3. Express receives request → validates → saves to MongoDB
+4. Respond with saved task object
+5. Frontend updates UI with new task
+
+### Viewing a Project’s Tasks
+1. React sends `GET /api/projects/:id`
+2. Backend finds project and related tasks
+3. Sends project data and task list to frontend
+4. React renders the project dashboard
