@@ -1,0 +1,135 @@
+Extended Testing and Quality Assurance for FitTrack
+
+1. Frontend UI Component Tests
+
+Navbar.test.jsx
+
+import { render, screen } from '@testing-library/react';
+import Navbar from '../components/Navbar';
+
+test('renders app name and links', () => {
+  render(<Navbar />);
+  expect(screen.getByText(/FitTrack/i)).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: /Home/i })).toBeInTheDocument();
+});
+
+WorkoutForm.test.jsx
+
+import { render, screen, fireEvent } from '@testing-library/react';
+import WorkoutForm from '../components/WorkoutForm';
+
+test('shows validation on empty submit', () => {
+  render(<WorkoutForm />);
+  fireEvent.click(screen.getByText(/Submit/i));
+  expect(screen.getByText(/All fields are required/i)).toBeInTheDocument();
+});
+
+2. Edge Case Testing
+
+Empty/Invalid Inputs
+
+Empty login: expect error message
+
+Extremely long inputs: should not break UI
+
+API Failure Simulation
+
+jest.mock('axios');
+axios.post.mockRejectedValueOnce(new Error('Network Error'));
+
+3. Global State and API Mocking
+
+Use jest.mock() for mocking context/state and API:
+
+jest.mock('../context/AuthContext', () => ({
+  useAuth: () => ({ user: { name: 'Test User' }, logout: jest.fn() })
+}));
+
+4. CI/CD Integration
+
+GitHub Actions Workflow
+
+.github/workflows/ci.yml
+
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm test
+
+5. Lighthouse and Accessibility
+
+Run in Chrome DevTools > Lighthouse:
+
+Check scores for:
+
+Performance
+
+Accessibility
+
+Best Practices
+
+SEO
+
+Use axe-core/react for test automation
+
+6. Responsive Testing
+
+Use Chrome DevTools or BrowserStack to test:
+
+iPhone SE, iPhone 13
+
+Android Pixel 6
+
+iPad
+
+1440px desktop
+
+7. Refactoring Tips
+
+Move API calls to /utils/api.js
+
+Create custom hooks like useForm, useAuth
+
+Extract repetitive form validation
+
+8. Type Safety with PropTypes
+
+WorkoutForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+9. Summary Checklist
+
+✅	Item	Description
+
+☑	Component Folder Structure Created	components/, pages/, layouts/, and routes/ directories are organized
+
+☑	Core Components Implemented	Created Navbar, Footer, and Sidebar reusable components
+
+☑	Page Components Setup	Created pages like Home, Login, Register, Dashboard, Profile, Workout, and Nutrition
+
+☑	React Router Installed	Installed react-router-dom and configured routing in the app
+
+☑	Routes Defined	Routes for all major pages are defined in App.js or a central Routes.jsx file
+
+☑	Navigation Working	Navigation between pages via links or menu is functional
+
+☑	Protected Routes Implemented	Added logic to protect certain routes (e.g., Dashboard/Profile) for logged-in users
+
+☑	404 Page Created	A fallback route is created to show a "Page Not Found" error
+
+☑	Responsive Layout Verified	Components and pages adjust correctly on mobile, tablet, and desktop
+
+☑	State/Props Properly Managed	Components are receiving data via props or context as required
+
