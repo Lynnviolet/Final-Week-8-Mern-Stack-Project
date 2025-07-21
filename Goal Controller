@@ -1,0 +1,43 @@
+// File: controllers/goalController.js
+import Goal from '../models/Goal.js';
+
+export const createGoal = async (req, res) => {
+  const { type, target, deadline } = req.body;
+  try {
+    const goal = new Goal({
+      user: req.user._id,
+      type,
+      target,
+      deadline,
+    });
+    const savedGoal = await goal.save();
+    res.status(201).json(savedGoal);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getGoals = async (req, res) => {
+  try {
+    const goals = await Goal.find({ user: req.user._id });
+    res.json(goals);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const deleteGoal = async (req, res) => {
+  try {
+    const goal = await Goal.findById(req.params.id);
+    if (!goal) return res.status(404).json({ message: 'Goal not found' });
+
+    if (goal.user.toString() !== req.user._id.toString()) {
+      return res.status(401).json({ message: 'Not authorized' });
+    }
+
+    await goal.deleteOne();
+    res.json({ message: 'Goal removed' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
