@@ -1,0 +1,9 @@
+{
+  _id,
+  userId,
+  type, // cardio, strength, yoga
+  description,
+  duration, // in minutes
+  caloriesBurned,
+  date
+}
