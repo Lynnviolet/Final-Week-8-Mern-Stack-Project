@@ -1,0 +1,87 @@
+🗺️ FitTrack Project Roadmap
+🟦 Week 1: Planning & Backend Setup (Task 1 & Start of Task 2)
+Goal: Finalize planning and set up the backend foundation.
+
+Milestones:
+ Choose project idea ✅
+
+ Design wireframes and mockups
+
+ Define database schema (User, Workout, Nutrition, Progress)
+
+ Plan API endpoints and data flow
+
+ Document technical architecture
+
+ Initialize project repository (server + client folders)
+
+ Set up Node.js + Express server
+
+ Connect MongoDB Atlas with Mongoose
+
+ Implement basic User model + authentication (register, login, JWT)
+
+🟦 Week 2: Backend Features & Testing
+Goal: Implement core backend logic and test it.
+
+Milestones:
+ Create controllers/routes for:
+
+Workouts
+
+Nutrition Logs
+
+Progress Tracking
+
+ Implement authorization middleware
+
+ Add request validation (e.g. Joi or express-validator)
+
+ Integrate Socket.io for real-time reminders
+
+ Write unit and integration tests with Jest + Supertest
+
+ Set up .env and organize config files
+
+🟦 Week 3: Frontend with React + Tailwind
+Goal: Build a functional and responsive frontend.
+
+Milestones:
+ Set up React app (Vite or CRA) + Tailwind CSS
+
+ Build reusable components: Navbar, Forms, Cards, Charts
+
+ Pages:
+
+Auth (Login/Register)
+
+Dashboard (Stats overview)
+
+Workout & Nutrition logs
+
+Progress graph
+
+ Fetch data from backend using Axios/Fetch
+
+ Implement state management with Context API or Redux Toolkit
+
+ Connect Socket.io-client for real-time features
+
+🟦 Week 4: Testing, Final Touches & Deployment
+Goal: Polish, test, and deploy the full-stack app.
+
+Milestones:
+ End-to-End testing with Cypress or Playwright
+
+ Bug fixing and performance optimization
+
+ Write detailed README with installation & usage guide
+
+ Deploy backend to Render / Railway / Vercel Serverless Functions
+
+ Deploy frontend to Netlify or Vercel
+
+ Test everything live (production build)
+
+ Prepare short demo video 
+
