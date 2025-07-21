@@ -1,0 +1,38 @@
+# 🏗️ Technical Architecture – FitTrack
+
+## Overview
+FitTrack is built on the MERN stack with real-time updates and robust testing and deployment pipelines.
+
+---
+
+## 📂 Project Structure
+
+### Backend
+- Express server with Mongoose models
+- RESTful API + JWT authentication
+- Socket.io for real-time updates
+
+### Frontend
+- React + Tailwind
+- Recharts for analytics
+- Axios for API calls
+
+---
+
+## 🧪 Testing
+- Jest & Supertest (API)
+- React Testing Library (UI)
+- Cypress (End-to-end)
+
+---
+
+## 🧵 CI/CD
+- GitHub Actions
+- Vercel & Render deployments
+- Auto-build on push to `main`
+
+---
+
+## 🔍 Monitoring
+- Sentry (error tracking)
+- Logtail (logs)
