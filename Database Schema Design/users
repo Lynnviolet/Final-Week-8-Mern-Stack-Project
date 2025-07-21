@@ -1,0 +1,13 @@
+{
+  _id,
+  name,
+  email,
+  password,
+  age,
+  gender,
+  weight,
+  height,
+  goal, // e.g., weight loss, muscle gain
+  createdAt,
+  updatedAt
+}
