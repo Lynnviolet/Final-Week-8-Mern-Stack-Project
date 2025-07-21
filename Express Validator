@@ -1,0 +1,119 @@
+✅ 1. Install express-validator
+Run this in your backend project directory:
+
+bash
+Copy
+Edit
+npm install express-validator
+✅ 2. Create a validators folder
+Inside your backend folder, create a folder:
+
+markdown
+Copy
+Edit
+backend/
+└── validators/
+    ├── workoutValidator.js
+    ├── nutritionValidator.js
+    └── goalValidator.js
+✅ 3. Create Validator Files
+📄 validators/workoutValidator.js
+js
+Copy
+Edit
+const { body } = require('express-validator');
+
+exports.validateWorkout = [
+  body('type')
+    .notEmpty()
+    .withMessage('Workout type is required'),
+  
+  body('duration')
+    .isInt({ min: 1 })
+    .withMessage('Duration must be a positive integer'),
+  
+  body('caloriesBurned')
+    .isNumeric()
+    .withMessage('Calories burned must be a number'),
+];
+📄 validators/nutritionValidator.js
+js
+Copy
+Edit
+const { body } = require('express-validator');
+
+exports.validateNutrition = [
+  body('food')
+    .notEmpty()
+    .withMessage('Food name is required'),
+
+  body('calories')
+    .isNumeric()
+    .withMessage('Calories must be a number'),
+
+  body('protein')
+    .optional()
+    .isNumeric()
+    .withMessage('Protein must be a number'),
+
+  body('carbs')
+    .optional()
+    .isNumeric()
+    .withMessage('Carbs must be a number'),
+
+  body('fats')
+    .optional()
+    .isNumeric()
+    .withMessage('Fats must be a number'),
+];
+📄 validators/goalValidator.js
+js
+Copy
+Edit
+const { body } = require('express-validator');
+
+exports.validateGoal = [
+  body('type')
+    .notEmpty()
+    .withMessage('Goal type is required'),
+
+  body('target')
+    .notEmpty()
+    .withMessage('Goal target is required'),
+
+  body('deadline')
+    .isISO8601()
+    .withMessage('Deadline must be a valid date'),
+];
+✅ 4. Create a General Validation Middleware
+📄 middleware/validateRequest.js
+js
+Copy
+Edit
+const { validationResult } = require('express-validator');
+
+const validateRequest = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};
+
+module.exports = validateRequest;
+✅ 5. Usage Example in Routes
+🛣 routes/workoutRoutes.js
+js
+Copy
+Edit
+const express = require('express');
+const router = express.Router();
+const { createWorkout } = require('../controllers/workoutController');
+const { validateWorkout } = require('../validators/workoutValidator');
+const validateRequest = require('../middleware/validateRequest');
+const auth = require('../middleware/authMiddleware');
+
+router.post('/', auth, validateWorkout, validateRequest, createWorkout);
+
+module.exports = router;
+Repeat similar logic for nutritionRoutes.js and goalRoutes.js.
