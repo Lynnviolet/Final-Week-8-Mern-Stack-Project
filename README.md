@@ -76,9 +76,8 @@ server/
 ├── tests/ # Unit/integration tests
 └── app.js # Express setup
 
-shell
-Copy
-Edit
+
+
 
 ### Frontend (`/client`)
 client/
@@ -90,20 +89,13 @@ client/
 ├── tests/ # Component tests
 └── App.jsx # Main routing & layout
 
-yaml
-Copy
-Edit
 
----
 
 ## 🚦 API Documentation
 
 ### Base URL:
 https://fittrack-api.onrender.com/api
 
-markdown
-Copy
-Edit
 
 ### Example Endpoints:
 
